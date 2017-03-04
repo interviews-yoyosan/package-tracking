@@ -176,6 +176,7 @@ return [
         // PackageTracking\Providers\BroadcastServiceProvider::class,
         PackageTracking\Providers\EventServiceProvider::class,
         PackageTracking\Providers\RouteServiceProvider::class,
+        PackageTracking\Providers\RepositoryProvider::class,
 
     ],
 

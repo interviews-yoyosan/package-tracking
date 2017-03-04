@@ -12,7 +12,8 @@ Please implement a system:
 
 - [X] Create model, controller, migration and seeder.
 - [X] Implement needed REST API methods.
-- [ ] Make storage flexible.
+- [X] Make storage flexible.
+- [ ] Add tests.
 - [ ] Implement front-end using Vue.js.
 - [ ] Connect front-end to the backend.
 

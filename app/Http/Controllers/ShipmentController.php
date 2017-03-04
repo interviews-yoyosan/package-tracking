@@ -2,11 +2,19 @@
 
 namespace PackageTracking\Http\Controllers;
 
-use PackageTracking\Shipment;
 use Illuminate\Http\Request;
+use PackageTracking\Shipment;
+use PackageTracking\Repositories\Repository;
 
 class ShipmentController extends Controller
 {
+    protected $repo;
+
+    public function __construct(Repository $repo)
+    {
+        $this->repo = $repo;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,7 @@ class ShipmentController extends Controller
      */
     public function index()
     {
-        return response()->json(Shipment::all());
+        return response()->json($this->repo->all());
     }
 
     /**
@@ -41,12 +49,12 @@ class ShipmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \PackageTracking\Shipment  $shipment
+     * @param  string $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Shipment $shipment)
+    public function show(string $id)
     {
-        return response()->json(Shipment::find($shipment));
+        return response()->json($this->repo->findOrFail($id));
     }
 
     /**
