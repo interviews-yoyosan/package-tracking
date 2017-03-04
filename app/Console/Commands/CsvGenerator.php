@@ -2,8 +2,8 @@
 
 namespace PackageTracking\Console\Commands;
 
-use PackageTracking\Shipment;
 use Illuminate\Console\Command;
+use PackageTracking\Shipment;
 
 class CsvGenerator extends Command
 {
@@ -23,8 +23,6 @@ class CsvGenerator extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {

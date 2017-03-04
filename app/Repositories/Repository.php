@@ -2,11 +2,9 @@
 
 namespace PackageTracking\Repositories;
 
-use Illuminate\Database\Eloquent\Model;
-
 interface Repository
 {
-	public function all();
+    public function all();
 
-	public function findOrFail(string $id);
+    public function findOrFail(string $id);
 }

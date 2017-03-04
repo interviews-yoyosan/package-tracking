@@ -3,8 +3,8 @@
 namespace PackageTracking\Http\Controllers;
 
 use Illuminate\Http\Request;
-use PackageTracking\Shipment;
 use PackageTracking\Repositories\Repository;
+use PackageTracking\Shipment;
 
 class ShipmentController extends Controller
 {
@@ -38,7 +38,8 @@ class ShipmentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -49,7 +50,8 @@ class ShipmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  string $id
+     * @param string $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(string $id)
@@ -60,7 +62,8 @@ class ShipmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \PackageTracking\Shipment  $shipment
+     * @param \PackageTracking\Shipment $shipment
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Shipment $shipment)
@@ -71,8 +74,9 @@ class ShipmentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \PackageTracking\Shipment  $shipment
+     * @param \Illuminate\Http\Request  $request
+     * @param \PackageTracking\Shipment $shipment
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Shipment $shipment)
@@ -83,7 +87,8 @@ class ShipmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \PackageTracking\Shipment  $shipment
+     * @param \PackageTracking\Shipment $shipment
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Shipment $shipment)

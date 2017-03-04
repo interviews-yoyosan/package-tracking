@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| Here you may define all of your model factories. Model factories give
-| you a convenient way to create models for testing and seeding your
-| database. Just tell the factory how a default model should look.
-|
-*/
-
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(PackageTracking\User::class, function (Faker\Generator $faker) {
     static $password;
@@ -24,10 +13,10 @@ $factory->define(PackageTracking\User::class, function (Faker\Generator $faker) 
 });
 
 $factory->define(PackageTracking\Shipment::class, function (Faker\Generator $faker) {
-	return [
-		'name' => ucfirst($faker->words(mt_rand(2, 4), true)),
-		'status' => PackageTracking\Shipment::STATUS_PROCESSING,
-		'carrier' => $faker->company,
-		'delivery_date' => \Carbon\Carbon::today()->addDays(mt_rand(5, 12))
-	];
+    return [
+        'name' => ucfirst($faker->words(mt_rand(2, 4), true)),
+        'status' => PackageTracking\Shipment::STATUS_PROCESSING,
+        'carrier' => $faker->company,
+        'delivery_date' => \Carbon\Carbon::today()->addDays(mt_rand(5, 12)),
+    ];
 });

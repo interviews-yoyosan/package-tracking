@@ -3,15 +3,13 @@
 namespace PackageTracking\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use PackageTracking\Repositories\Repository;
 use PackageTracking\Http\Controllers\ShipmentController;
+use PackageTracking\Repositories\Repository;
 
 class RepositoryProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
-     *
-     * @return void
      */
     public function boot()
     {
@@ -20,8 +18,6 @@ class RepositoryProvider extends ServiceProvider
 
     /**
      * Register the application services.
-     *
-     * @return void
      */
     public function register()
     {
