@@ -13,8 +13,16 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+Vue.component('tracker', require('./components/Tracker.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+    	sId: 0
+    },
+    methods: {
+        track: function (value) {
+            this.sId = value
+        }
+    }
 });

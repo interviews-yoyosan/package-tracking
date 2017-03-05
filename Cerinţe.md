@@ -13,7 +13,7 @@ Please implement a system:
 - [X] Create model, controller, migration and seeder.
 - [X] Implement needed REST API methods.
 - [X] Make storage flexible.
-- [ ] Add tests.
+- [X] Add tests.
 - [ ] Implement front-end using Vue.js.
 - [ ] Connect front-end to the backend.
 
@@ -43,4 +43,7 @@ touch database/database.sqlite
 
 # generate the test db
 ./artisan migrate --database=sqlite_test
+```
 
+                        v-bind:value="shipmentId"
+                        v-on:keyup.enter="track($event.target.value)"
