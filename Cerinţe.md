@@ -30,3 +30,17 @@ Please implement a system:
 * Trebuie sa vedem ca produsul X, o sa fie livrat la data Y. Nu cautam ceva foarte complex, dupa cum ai vazut, timpul estimat de executare este undeva la 4h.
 * Daca ai intrebari sau nelamuriri, te rog sa-mi scrii.
 * De asemenea, as vrea sa imi oferi un feedback asupra testului si sa-mi confirmi daca DL ramane pentru ziua de luni :)
+
+# Comenzi de executat
+
+```
+# generate the sqlite DB
+touch database/database.sqlite
+./artisan migrate:refresh --seed
+
+# generate the CSV file
+./artisan generate:csv
+
+# generate the test db
+./artisan migrate --database=sqlite_test
+

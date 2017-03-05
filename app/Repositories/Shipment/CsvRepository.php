@@ -2,6 +2,7 @@
 
 namespace PackageTracking\Repositories\Shipment;
 
+use Keboola\Csv\CsvFile;
 use Illuminate\Support\Collection;
 use PackageTracking\Repositories\Repository;
 
@@ -11,14 +12,37 @@ class CsvRepository implements Repository
 
     public function __construct()
     {
-        $this->csvFile = new \Keboola\Csv\CsvFile(config('packagetracking.csv_path'));
+        $this->csvFile = new CsvFile(config('packagetracking.csv_path'));
     }
 
+    /**
+     * Set the CSV file used for the repository.
+     *
+     * @param string $csvFile
+     */
+    public function setCsvFile(string $csvFile)
+    {
+    	$this->csvFile = new CsvFile($csvFile);
+    }
+
+    /**
+     * Get a collection of all shipments.
+     *
+     * @return \Illuminate\Support\Collection
+     */
     public function all()
     {
         return $this->transformIntoCollection();
     }
 
+    /**
+     * Find the desired id or thrown a ModelNotFound exception.
+     *
+     * @param string $id
+     *
+     * @return \Illuminate\Support\Collection
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
+     */
     public function findOrFail(string $id)
     {
         $shipments = $this->transformIntoCollection();
@@ -35,6 +59,11 @@ class CsvRepository implements Repository
         return $shipment;
     }
 
+    /**
+     * Transform the parsed CSV result into a collection.
+     *
+     * @return \Illuminate\Support\Collection
+     */
     protected function transformIntoCollection()
     {
         $shipmentsCollection = new Collection($this->csvFile);
