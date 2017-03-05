@@ -49,9 +49,9 @@ class ShipmentCsvRepositoryTest extends TestCase
 		$this->repo->setCsvFile(base_path('tests/Unit/fixtures/four_shipments.csv'));
 		$shipment = $this->repo->findOrFail('1');
 
-		$this->assertInstanceOf(Collection::class, $shipment);
-		$this->assertCount(1, $shipment);
-		$this->assertEquals('Libero rerum non Gigi Pruna', $shipment->first()['name']);
+		$this->assertInternalType('array', $shipment);
+		$this->assertCount(7, $shipment);
+		$this->assertEquals('Libero rerum non Gigi Pruna', $shipment['name']);
 	}
 
 	/**

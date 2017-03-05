@@ -38,7 +38,7 @@ touch database/database.sqlite
 ./artisan migrate:refresh --seed
 
 # generate the CSV file
-./artisan generate:csv
+./artisan generator:csv
 
 # generate the test db
 touch database/database_test.sqlite
@@ -54,6 +54,12 @@ Pentru a schimba storageul, aveţi două posibilităţi:
 
 1. În fişierul `.env` schimbaţi valoarea cheii `STORAGE_TYPE` la una din următoarele valori: `db`, `csv`.
 2. Schimbaţi valoarea implicită din fişierul `app/packagetracking.php` la `db` sau `csv`.
+
+## Rularea testelor
+
+```
+./vendor/bin/phpunit tests/
+```
 
 # Pornire
 

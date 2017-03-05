@@ -42,7 +42,7 @@ class CsvRepository implements Repository
      *
      * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
      *
-     * @return \Illuminate\Support\Collection
+     * @return array
      */
     public function findOrFail(string $id)
     {
@@ -57,7 +57,7 @@ class CsvRepository implements Repository
                 ->setModel(\PackageTracking\Shipment::class, $id);
         }
 
-        return $shipment;
+        return $shipment->first();
     }
 
     /**
