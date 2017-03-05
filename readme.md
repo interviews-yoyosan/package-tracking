@@ -27,6 +27,14 @@ Please implement a system:
 
 # Instalare
 
+## Automată
+
+```
+./install.sh
+```
+
+## Manuală
+
 ```
 composer install
 

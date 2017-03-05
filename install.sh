@@ -11,7 +11,7 @@ touch database/database.sqlite
 ./artisan migrate:refresh --seed
 
 # generate the CSV file
-./artisan generate:csv
+./artisan generator:csv
 
 # generate the test db
 touch database/database_test.sqlite
