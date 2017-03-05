@@ -22,8 +22,9 @@ class DbRepository implements Repository
      *
      * @param string $id
      *
-     * @return \Illuminate\Database\Eloquent\Model
      * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
+     *
+     * @return \Illuminate\Database\Eloquent\Model
      */
     public function findOrFail(string $id)
     {

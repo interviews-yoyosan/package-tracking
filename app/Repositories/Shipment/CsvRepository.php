@@ -2,8 +2,8 @@
 
 namespace PackageTracking\Repositories\Shipment;
 
-use Keboola\Csv\CsvFile;
 use Illuminate\Support\Collection;
+use Keboola\Csv\CsvFile;
 use PackageTracking\Repositories\Repository;
 
 class CsvRepository implements Repository
@@ -22,7 +22,7 @@ class CsvRepository implements Repository
      */
     public function setCsvFile(string $csvFile)
     {
-    	$this->csvFile = new CsvFile($csvFile);
+        $this->csvFile = new CsvFile($csvFile);
     }
 
     /**
@@ -40,8 +40,9 @@ class CsvRepository implements Repository
      *
      * @param string $id
      *
-     * @return \Illuminate\Support\Collection
      * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
+     *
+     * @return \Illuminate\Support\Collection
      */
     public function findOrFail(string $id)
     {
