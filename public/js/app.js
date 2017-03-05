@@ -11200,15 +11200,41 @@ __webpack_require__(31);
 Vue.component('tracker', __webpack_require__(49));
 
 var app = new Vue({
-    el: '#app',
-    data: {
-        sId: 0
-    },
-    methods: {
-        track: function track(value) {
-            this.sId = value;
-        }
-    }
+	el: '#app',
+	data: {
+		sId: '',
+		answer: '',
+		dataP: []
+	},
+	watch: {
+		// whenever sId changes, this function will run
+		sId: function sId(newQuestion) {
+			this.answer = 'Waiting for you to stop typing...';
+			this.getShipmentData();
+		}
+	},
+	methods: {
+		getShipmentData: _.debounce(function () {
+			this.answer = 'Thinking...';
+			var vm = this;
+
+			if (!this.sId) {
+				this.answer = '';
+				return;
+			}
+
+			axios.get('api/shipment/' + this.sId).then(function (response) {
+				vm.dataP = response.data;
+				vm.answer = 'Shipment #' + vm.sId + ' found!';
+			}).catch(function (error) {
+				vm.answer = 'Shipment #' + vm.sId + ' not found :(';
+				vm.dataP = [];
+			});
+		},
+		// This is the number of milliseconds we wait for the
+		// user to stop typing.
+		500)
+	}
 });
 
 /***/ }),
@@ -40888,6 +40914,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = {
     mounted: function mounted() {
@@ -40896,8 +40932,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     props: {
         shipmentId: {
-            type: Number,
             default: 0
+        },
+        data: {
+            default: []
+        }
+    },
+    filters: {
+        capitalize: function capitalize(value) {
+            if (!value) return '';
+
+            value = value.toString();
+            value = value.split('_').join(' ');
+
+            return value.charAt(0).toUpperCase() + value.slice(1);
+        },
+        date: function date(value) {
+            if (!value) return '';
+
+            var date = Date.parse(value);
+            if (!isNaN(date)) {
+                return new Date(date).toDateString();
+            }
+
+            return value;
+        }
+    },
+    computed: {
+        hasData: function hasData() {
+            return this.data.hasOwnProperty('id');
         }
     }
 };
@@ -40947,9 +41010,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-8 col-md-offset-2"
-  }, [_c('div', {
+  }, [(_vm.shipmentId) ? _c('div', {
     staticClass: "panel panel-default"
-  }, [_c('p', [_vm._v("Shipment ID: " + _vm._s(_vm.shipmentId))])])])])])
+  }, [_c('p', [_vm._v("Shipment ID: " + _vm._s(_vm.shipmentId))])]) : _vm._e(), _vm._v(" "), (_vm.hasData) ? _c('div', _vm._l((_vm.data), function(value, key) {
+    return (!(key == 'created_at' || key == 'updated_at' || key == 'id')) ? _c('div', {
+      staticStyle: {
+        "text-align": "left"
+      }
+    }, [_c('strong', [_vm._v(_vm._s(_vm._f("capitalize")(key)))]), _vm._v(" "), _c('span', [_vm._v(": " + _vm._s(_vm._f("date")(value)))])]) : _vm._e()
+  })) : _vm._e()])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

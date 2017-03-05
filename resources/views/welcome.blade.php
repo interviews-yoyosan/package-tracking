@@ -72,9 +72,11 @@
                 </div>
 
                 <div id="app">
-                    <input v-model="sId" placeholder="Your shipment ID">
+                    <input v-model.number="sId" placeholder="Your shipment ID">
                     <br>
-                    <tracker :shipment-id="sId"></tracker>
+                    <p>@{{ answer }}</p>
+                    <br>
+                    <tracker :shipment-id="sId" :data="dataP"></tracker>
                 </div>
         </div>
 

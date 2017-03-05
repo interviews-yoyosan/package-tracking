@@ -18,11 +18,41 @@ Vue.component('tracker', require('./components/Tracker.vue'));
 const app = new Vue({
     el: '#app',
     data: {
-    	sId: 0
+    	sId: '',
+    	answer: '',
+    	dataP: []
+    },
+    watch: {
+		// whenever sId changes, this function will run
+		sId: function (newQuestion) {
+			this.answer = 'Waiting for you to stop typing...'
+			this.getShipmentData()
+		}
     },
     methods: {
-        track: function (value) {
-            this.sId = value
-        }
+	    getShipmentData: _.debounce(
+	      function () {
+	        this.answer = 'Thinking...'
+	        var vm = this
+
+	        if (!this.sId) {
+	        	this.answer = ''
+	        	return
+	        }
+
+	        axios.get('api/shipment/' + this.sId)
+	          .then(function (response) {
+	            vm.dataP = response.data
+	            vm.answer = 'Shipment #' + vm.sId + ' found!'
+	          })
+	          .catch(function (error) {
+	            vm.answer = 'Shipment #' + vm.sId + ' not found :('
+	            vm.dataP = []
+	          })
+	      },
+	      // This is the number of milliseconds we wait for the
+	      // user to stop typing.
+	      500
+	    )
     }
 });
