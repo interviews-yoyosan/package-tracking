@@ -16,7 +16,7 @@ Please implement a system:
 - [X] Add tests.
 - [X] Implement front-end using Vue.js.
 - [X] Connect front-end to the backend.
-- [ ] Testare instalare nouă.
+- [X] Final testing.
 
 ## Expectations
 
