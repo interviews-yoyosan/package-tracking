@@ -24,7 +24,7 @@ const app = new Vue({
     },
     watch: {
 		// whenever sId changes, this function will run
-		sId: function (newQuestion) {
+		sId: function () {
 			this.answer = 'Waiting for you to stop typing...'
 			this.getShipmentData()
 		}
@@ -33,10 +33,12 @@ const app = new Vue({
 	    getShipmentData: _.debounce(
 	      function () {
 	        this.answer = 'Thinking...'
+	        this.dataP = []
 	        var vm = this
 
 	        if (!this.sId) {
 	        	this.answer = ''
+	        	this.dataP = []
 	        	return
 	        }
 
