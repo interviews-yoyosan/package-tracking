@@ -16,6 +16,7 @@ Please implement a system:
 - [X] Add tests.
 - [X] Implement front-end using Vue.js.
 - [X] Connect front-end to the backend.
+- [ ] Testare instalare nouă.
 
 ## Expectations
 
@@ -29,25 +30,35 @@ Please implement a system:
 ```
 composer install
 
+cp .env.example .env
+./artisan key:generate
+
 # generate the sqlite DB
-$ touch database/database.sqlite
-$ ./artisan migrate:refresh --seed
+touch database/database.sqlite
+./artisan migrate:refresh --seed
 
 # generate the CSV file
-$ ./artisan generate:csv
+./artisan generate:csv
 
 # generate the test db
-$ touch database/database_test.sqlite
-$ ./artisan migrate --database=sqlite_test
+touch database/database_test.sqlite
+./artisan migrate --database=sqlite_test
 
-$ npm install
-$ npm run production
+npm install
+npm run production
 ```
+
+## Schimbare storage
+
+Pentru a schimba storageul, aveţi două posibilităţi:
+
+1. În fişierul `.env` schimbaţi valoarea cheii `STORAGE_TYPE` la una din următoarele valori: `db`, `csv`.
+2. Schimbaţi valoarea implicită din fişierul `app/packagetracking.php` la `db` sau `csv`.
 
 # Pornire
 
 ```
-$ ./artisan serve
+./artisan serve
 ```
 
-Vizitează http://localhost:8000.
+Începe [aici](http://localhost:8000).

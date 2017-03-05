@@ -11,5 +11,5 @@ return [
      *
      * Possible values: db, csv
      */
-    'storage_type' => env('STORAGE_type', 'db'),
+    'storage_type' => env('STORAGE_TYPE', 'db'),
 ];
