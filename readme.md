@@ -76,3 +76,15 @@ Pentru a schimba storageul, aveţi două posibilităţi:
 ```
 
 Începe [aici](http://localhost:8000).
+
+## Metode API
+
+```
++--------+----------+-------------------+-----------------+-----------------------------------------------------------+------------+
+| Domain | Method   | URI               | Name            | Action                                                    | Middleware |
++--------+----------+-------------------+-----------------+-----------------------------------------------------------+------------+
+|        | GET|HEAD | /                 |                 | Closure                                                   | web        |
+|        | GET|HEAD | api/shipment/{id} |                 | PackageTracking\Http\Controllers\ShipmentController@show  | api        |
+|        | GET|HEAD | api/shipments     | shipments.index | PackageTracking\Http\Controllers\ShipmentController@index | api        |
++--------+----------+-------------------+-----------------+-----------------------------------------------------------+------------+
+```
