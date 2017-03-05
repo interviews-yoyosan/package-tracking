@@ -45,6 +45,7 @@ class CsvGenerator extends Command
         $csvStorage->writeRow(array_keys($shipments->first()->toArray()));
 
         foreach ($shipments as $shipment) {
+            $shipment->name .= ' - from CSV';
             $csvStorage->writeRow(array_values($shipment->toArray()));
         }
 
